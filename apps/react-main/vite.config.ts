@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 import { defineConfig } from 'vite'
 import vitePluginCompression from 'vite-plugin-compression'
 import { resolve } from 'path'
