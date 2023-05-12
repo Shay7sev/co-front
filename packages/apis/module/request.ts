@@ -25,8 +25,7 @@ import { LOGIN_URL } from '../config/config'
 // const navigate = useNavigate()
 const config = {
   // 默认地址请求地址，可在 .env.*** 文件中修改
-  baseURL: '',
-  // baseURL: 'http://192.168.30.124:9200',
+  baseURL: process.env.VITE_BASE_API,
   // 设置超时时间（30s）
   timeout: ResultEnum.TIMEOUT as number,
   // 跨域时候允许携带凭证
@@ -72,7 +71,7 @@ class RequestHttp {
         // tryHideFullScreenLoading()
         // * 登陆失效（code == 401）
         if (data.code === ResultEnum.OVERDUE) {
-          Notification('error', data.msg)
+          Notification.error({ message: data.msg })
           // globalStore.setToken('')
           // router.replace(LOGIN_URL)
           console.log(LOGIN_URL)
@@ -83,7 +82,7 @@ class RequestHttp {
         }
         // * 全局错误信息拦截（防止下载文件得时候返回数据流，没有code，直接报错）
         if (data.code && data.code !== ResultEnum.SUCCESS) {
-          Notification('error', data.msg)
+          Notification.error({ message: data.msg })
           return Promise.reject(data)
         }
         // * 成功请求（在页面上除非特殊情况，否则不用在页面处理失败逻辑）
@@ -94,9 +93,9 @@ class RequestHttp {
         // tryHideFullScreenLoading()
         // 请求超时 && 网络错误单独判断，没有 response
         if (error.message.indexOf('timeout') !== -1)
-          Notification('error', '请求超时！请您稍后重试')
+          Notification.error({ message: '请求超时！请您稍后重试' })
         if (error.message.indexOf('Network Error') !== -1)
-          Notification('error', '网络错误！请您稍后重试')
+          Notification.error({ message: '网络错误！请您稍后重试' })
         // 根据响应的错误状态码，做不同的处理
         if (response) checkStatus(response.status)
         // 服务器结果都没有返回(可能服务器错误可能客户端断网)，断网处理:可以跳转到断网页面

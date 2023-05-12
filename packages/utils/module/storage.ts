@@ -1,7 +1,7 @@
 // @ts-expect-error
 import CryptoJS from 'crypto-js'
 
-import { Settings } from './contans'
+import { Settings } from './contants'
 
 // 十六位十六进制数作为密钥
 const SECRET_KEY = CryptoJS.enc.Utf8.parse('3333e6e143439161')

@@ -4,5 +4,5 @@ export const ADMIN = 'admin'
 
 export const Settings = {
   title: 'co-front',
-  logo: './logo.jpg',
+  logo: './vite.svg',
 } as const

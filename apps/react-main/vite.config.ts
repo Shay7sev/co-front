@@ -7,6 +7,9 @@ const baseUrl = 'react-admin-vite-antd5'
 
 export default defineConfig((config) => {
   return {
+    define: {
+      'process.env': {},
+    },
     plugins: [
       react(),
       vitePluginCompression({

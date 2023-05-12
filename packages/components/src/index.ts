@@ -1,6 +1,6 @@
 import Header from './components/header'
 import Layout from './components/Layout'
-import { Notification } from './components/Notification'
+import { Notification } from './components/EscapeAntd'
 
 import { MenuItem } from './components/Layout/layout'
 import OutletLayoutRouter from './components/OutletLayoutRouter'
