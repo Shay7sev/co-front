@@ -19,8 +19,10 @@ import { ResultEnum } from '../enums/httpEnum'
 import { checkStatus } from '../helper/checkStatus'
 import { Notification } from 'components'
 
-// import { GlobalStore } from '@/store/modules/global'
-import { LOGIN_URL } from '../config/config'
+import { store, setUserToken } from 'store'
+
+// import { LOGIN_URL } from '../config/config'
+import { removeStorage, TOKEN } from 'utils'
 
 // const navigate = useNavigate()
 const config = {
@@ -45,11 +47,10 @@ class RequestHttp {
      */
     this.service.interceptors.request.use(
       (config: InternalAxiosRequestConfig) => {
-        // const globalStore = GlobalStore()
         // * 如果当前请求不需要显示 loading,在 api 服务中通过指定的第三个参数: { headers: { noLoading: true } }来控制不显示loading
         // config.headers!.noLoading || showFullScreenLoading()
-        // const token = globalStore.token
-        const token = ''
+        const { user } = store.getState()
+        const token = user.token || ''
         if (config.headers && typeof config.headers?.set === 'function')
           config.headers.set('x-access-token', token)
         return config
@@ -66,15 +67,15 @@ class RequestHttp {
     this.service.interceptors.response.use(
       (response: AxiosResponse) => {
         const { data } = response
-        // const globalStore = GlobalStore()
         // * 在请求结束后，并关闭请求 loading
         // tryHideFullScreenLoading()
         // * 登陆失效（code == 401）
+        console.log(111, data.code)
         if (data.code === ResultEnum.OVERDUE) {
           Notification.error({ message: data.msg })
-          // globalStore.setToken('')
+          removeStorage(TOKEN)
+          setUserToken('')
           // router.replace(LOGIN_URL)
-          console.log(LOGIN_URL)
           // navigate(LOGIN_URL, {
           //   replace: true,
           // })

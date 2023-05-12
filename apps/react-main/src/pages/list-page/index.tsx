@@ -143,9 +143,9 @@ export default () => {
       columnsState={{
         persistenceKey: 'pro-table-singe-demos',
         persistenceType: 'localStorage',
-        onChange(value) {
-          console.log('value: ', value)
-        },
+        // onChange(value) {
+        //   console.log('value: ', value)
+        // },
       }}
       rowKey="id"
       search={{
@@ -170,7 +170,7 @@ export default () => {
       }}
       pagination={{
         pageSize: 5,
-        onChange: (page) => console.log(page),
+        // onChange: (page) => console.log(page),
       }}
       dateFormatter="string"
       headerTitle="高级表格"
