@@ -15,7 +15,15 @@ import {
 import ProLayout from '@ant-design/pro-layout'
 import { Input, Switch, Tooltip } from 'antd'
 import ErrorBoundary from 'antd/es/alert/ErrorBoundary'
-import { JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useContext, useEffect, useState } from 'react'
+import {
+  JSXElementConstructor,
+  ReactElement,
+  ReactFragment,
+  ReactPortal,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Settings } from 'utils'
 
@@ -200,7 +208,18 @@ export default () => {
               </div>
             )
           }}
-          menuItemRender={(item: { path: any }, dom: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined) => (
+          menuItemRender={(
+            item: { path: any },
+            dom:
+              | string
+              | number
+              | boolean
+              | ReactElement<any, string | JSXElementConstructor<any>>
+              | ReactFragment
+              | ReactPortal
+              | null
+              | undefined
+          ) => (
             <Link
               to={item?.path || '/'}
               onClick={() => {
