@@ -10,7 +10,6 @@ import axios, {
   AxiosResponse,
 } from 'axios'
 
-// import { useNavigate } from 'react-router-dom'
 import { ResultData } from '../interface'
 import { ResultEnum } from '../enums/httpEnum'
 import { checkStatus } from '../helper/checkStatus'
@@ -19,10 +18,9 @@ import { Loading } from 'components'
 
 import { store, setUserToken } from 'store'
 
-// import { LOGIN_URL } from '../config/config'
+import { LOGIN_URL } from '../config/config'
 import { removeStorage, TOKEN } from 'utils'
 
-// const navigate = useNavigate()
 const config = {
   // 默认地址请求地址，可在 .env.*** 文件中修改
   baseURL: process.env.VITE_BASE_API,
@@ -72,10 +70,7 @@ class RequestHttp {
           Message.error({ content: data.msg || '' })
           removeStorage(TOKEN)
           setUserToken('')
-          // router.replace(LOGIN_URL)
-          // navigate(LOGIN_URL, {
-          //   replace: true,
-          // })
+          window.location.replace(process.env.VITE_BASE_API + LOGIN_URL)
           return Promise.reject(data)
         }
         // * 全局错误信息拦截（防止下载文件得时候返回数据流，没有code，直接报错）
@@ -98,9 +93,7 @@ class RequestHttp {
         if (response) checkStatus(response.status)
         // 服务器结果都没有返回(可能服务器错误可能客户端断网)，断网处理:可以跳转到断网页面
         if (!window.navigator.onLine) {
-          // navigate('/500', {
-          //   replace: true,
-          // })
+          window.location.replace(process.env.VITE_BASE_API + '/500')
         }
         return Promise.reject(error)
       }
