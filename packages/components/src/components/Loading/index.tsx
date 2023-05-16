@@ -22,7 +22,8 @@ class Loading {
     if (visible) {
       document.body.appendChild(this.domNode)
     } else {
-      document.getElementById('loading') && document.body.removeChild(document.getElementById('loading')!)
+      document.getElementById('loading') &&
+        document.body.removeChild(document.getElementById('loading')!)
     }
   }
   createNode() {
