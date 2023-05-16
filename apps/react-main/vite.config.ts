@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import vitePluginCompression from 'vite-plugin-compression'
 import { resolve } from 'path'
 
-const baseUrl = 'react-admin-vite-antd5'
+const baseUrl = 'react-main'
 
 export default defineConfig((config) => {
   return {
