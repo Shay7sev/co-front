@@ -13,7 +13,7 @@
     "@ant-design/icons": "^4.8.0",
     "@ant-design/pro-components": "^2.4.12",
     "@ant-design/pro-layout": "^7.13.0",
-    "antd": "^5.0.1",
+    "antd": "^5.5.0",
     "components": "workspace:*",
     "hooks": "workspace:*",
     "lodash": "^4.17.21",
