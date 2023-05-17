@@ -4,6 +4,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev --filter=react-main",
     "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "reinstall": "pnpm run clean && rm -rf node_modules && rm -rf pnpm-lock.yaml && pnpm run bootstrap",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {

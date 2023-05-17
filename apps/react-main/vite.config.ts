@@ -25,6 +25,7 @@ export default defineConfig((config) => {
     server: {
       open: true,
       port: 5793,
+      https: config.mode !== 'development',
       proxy: {
         '/api': {
           target: 'http://localhost:8080',
@@ -33,7 +34,7 @@ export default defineConfig((config) => {
         },
       },
     },
-    base: config.mode === 'development' ? '/' : `/${baseUrl}/`,
+    // base: config.mode === 'development' ? '/' : `/${baseUrl}/`,
     build: {
       outDir: `../../${baseUrl}`,
       rollupOptions: {
