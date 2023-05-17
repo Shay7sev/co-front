@@ -1,19 +1,24 @@
 import { DashboardOutlined } from '@ant-design/icons'
-import { Alert, Button, Result, Spin } from 'antd'
+import { Alert, Button, Result } from 'antd'
 import { lazy, Suspense } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 
 import { TOKEN, getStorage } from 'utils'
 // import Layout from "@/components/Layout";
-import { Layout, OutletLayoutRouter } from 'components'
+import { Layout, OutletLayoutRouter, Progress } from 'components'
 import type { MenuItem } from 'components'
 import Dashboard from '@/pages/dashboard'
 import ErrorPage from '@/pages/error-page'
 import Login from '@/pages/login'
 
+// 白名单路由不放行
 const Permissions = ({ children }: any) => {
   const token = getStorage(TOKEN)
   return token ? children : <Navigate to="/login" />
+}
+const Guard = ({ children }: any) => {
+  const token = getStorage(TOKEN)
+  return token ? <Navigate to="/" /> : children
 }
 
 export const baseRouterList = [
@@ -26,7 +31,14 @@ export const baseRouterList = [
   },
 ]
 
-export const defaultRoutes: any = [
+interface RouteObject {
+  children?: RouteObject[]
+  element?: React.ReactNode
+  errorElement?: React.ReactNode
+  path?: string
+}
+
+export const defaultRoutes: RouteObject[] = [
   {
     path: '/',
     element: <Permissions>{<Layout />}</Permissions>,
@@ -61,11 +73,12 @@ export const defaultRoutes: any = [
   },
   {
     path: '/login',
-    element: <Login />,
+    element: <Guard>{<Login />}</Guard>,
   },
 ]
 
-// /**/ 表示二级目录 一般二级目录就够了  不够在加即可
+// /**/ matches zero or more directories
+// reference: https://cn.vitejs.dev/guide/features.html#glob-import
 export const modules = import.meta.glob('../pages/**/*.tsx')
 
 function pathToLazyComponent(Ele: string) {
@@ -84,7 +97,7 @@ function pathToLazyComponent(Ele: string) {
     )
   const Components = lazy(path)
   return (
-    <Suspense fallback={<Spin size="small" />}>
+    <Suspense fallback={<Progress />}>
       <Components />
     </Suspense>
   )

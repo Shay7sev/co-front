@@ -6,10 +6,12 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf build"
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
+    "@ant-design/pro-components": "^2.4.12",
     "@ant-design/pro-layout": "^7.13.0",
     "antd": "^5.0.1",
     "components": "workspace:*",
@@ -20,6 +22,7 @@
     "react-router-dom": "^6.8.1",
     "sass": "^1.62.1",
     "store": "workspace:*",
+    "apis": "workspace:*",
     "utils": "workspace:*"
   },
   "devDependencies": {

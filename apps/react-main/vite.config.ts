@@ -3,10 +3,13 @@ import { defineConfig } from 'vite'
 import vitePluginCompression from 'vite-plugin-compression'
 import { resolve } from 'path'
 
-const baseUrl = 'react-admin-vite-antd5'
+const baseUrl = 'react-main'
 
 export default defineConfig((config) => {
   return {
+    define: {
+      'process.env': {},
+    },
     plugins: [
       react(),
       vitePluginCompression({
@@ -22,6 +25,7 @@ export default defineConfig((config) => {
     server: {
       open: true,
       port: 5793,
+      https: config.mode !== 'development',
       proxy: {
         '/api': {
           target: 'http://localhost:8080',
@@ -30,7 +34,7 @@ export default defineConfig((config) => {
         },
       },
     },
-    base: config.mode === 'development' ? '/' : `/${baseUrl}/`,
+    // base: config.mode === 'development' ? '/' : `/${baseUrl}/`,
     build: {
       outDir: `../../${baseUrl}`,
       rollupOptions: {

@@ -9,11 +9,18 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/qs": "^6.9.7",
     "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*"
   },
   "dependencies": {
-    "umi-request": "^1.4.0"
+    "axios": "^1.4.0",
+    "components": "workspace:*",
+    "qs": "^6.11.1",
+    "umi-request": "^1.4.0",
+    "store": "workspace:*",
+    "utils": "workspace:*"
   }
 }
