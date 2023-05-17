@@ -51,7 +51,7 @@ const Workplace: FC = () => {
             currentUser={{
               avatar:
                 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
-              name: '吴彦祖',
+              name: 'Test',
               userid: '00000001',
               email: 'antdesign@alipay.com',
               signature: '海纳百川，有容乃大',
