@@ -11,13 +11,13 @@ import Dashboard from '@/pages/dashboard'
 import ErrorPage from '@/pages/error-page'
 import Login from '@/pages/login'
 
-const token = getStorage(TOKEN)
-
 // 白名单路由不放行
 const Permissions = ({ children }: any) => {
+  const token = getStorage(TOKEN)
   return token ? children : <Navigate to="/login" />
 }
 const Guard = ({ children }: any) => {
+  const token = getStorage(TOKEN)
   return token ? <Navigate to="/" /> : children
 }
 
