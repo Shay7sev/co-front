@@ -12,7 +12,7 @@ import {
   ProConfigProvider,
   ProSettings,
 } from '@ant-design/pro-components'
-import ProLayout from '@ant-design/pro-layout'
+import ProLayout, { MenuDataItem } from '@ant-design/pro-layout'
 import { Input, Switch, Tooltip } from 'antd'
 import ErrorBoundary from 'antd/es/alert/ErrorBoundary'
 import {
@@ -35,6 +35,8 @@ import {
   useLocationListen,
 } from 'hooks'
 import { getOperatingSystem, treeRouter } from 'utils'
+import { HeaderViewProps } from '@ant-design/pro-layout/es/components/Header'
+import { SiderMenuProps } from '@ant-design/pro-layout/es/components/SiderMenu/SiderMenu'
 
 // import { Settings } from "@/config/defaultSetting";
 // import { baseRouterList } from "@/routes";
@@ -126,7 +128,7 @@ export default () => {
             ),
           }}
           headerContentRender={() => <ProBreadcrumb />}
-          actionsRender={(props: { isMobile: any; layout: string }) => {
+          actionsRender={(props: HeaderViewProps) => {
             if (props.isMobile) return []
             return [
               props.layout !== 'side' && document.body.clientWidth > 1400 ? (
@@ -186,7 +188,7 @@ export default () => {
               </Tooltip>,
             ]
           }}
-          menuFooterRender={(props: { collapsed: any; isMobile: any }) => {
+          menuFooterRender={(props: SiderMenuProps | undefined) => {
             if (props?.collapsed || props?.isMobile) return undefined
             return (
               <div
@@ -209,7 +211,7 @@ export default () => {
             )
           }}
           menuItemRender={(
-            item: { path: any },
+            item: MenuDataItem,
             dom:
               | string
               | number
