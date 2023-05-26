@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useLocation, useRoutes, Location } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'hooks'
 import { Settings, ADMIN, ROUTER_WHITE_LIST, TOKEN, removeStorage } from 'utils'
-import { setMenu, setUserToken } from 'store'
+import { setMenu, setUserToken, store } from 'store'
 import { MenuData } from '@/common/mock'
 import { defaultRoutes, filepathToElement } from './index'
 import { cloneDeep } from 'lodash'
@@ -19,7 +19,7 @@ function guard(location: Location, token: string) {
   // 3.判断是否有 Token
   if (!token) {
     removeStorage(TOKEN)
-    setUserToken('')
+    store.dispatch(setUserToken(''))
   }
 
   return true

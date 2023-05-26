@@ -69,7 +69,7 @@ class RequestHttp {
         if (data.code === ResultEnum.OVERDUE) {
           Message.error({ content: data.msg || '' })
           removeStorage(TOKEN)
-          setUserToken('')
+          store.dispatch(setUserToken(''))
           window.location.replace(process.env.VITE_BASE_API + LOGIN_URL)
           return Promise.reject(data)
         }
