@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 
 import { store, Provider } from 'store'
+import 'virtual:svg-icons-register'
 
 const container = document.getElementById('root')
 const root = createRoot(container as HTMLDivElement)

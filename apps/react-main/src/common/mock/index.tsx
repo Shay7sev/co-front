@@ -1,6 +1,6 @@
 import { DesktopOutlined, TableOutlined, UserOutlined } from '@ant-design/icons'
 
-import { MenuItem } from 'components'
+import { MenuItem, SvgIcon } from 'components'
 
 export const MenuData: {
   user: MenuItem[]
@@ -20,7 +20,7 @@ export const MenuData: {
       label: 'User',
       key: 'user',
       path: 'user',
-      icon: <DesktopOutlined />,
+      icon: <SvgIcon name="react" />,
       filepath: 'pages/user/index.tsx',
     },
     {

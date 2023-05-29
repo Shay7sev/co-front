@@ -2,6 +2,7 @@ import react from '@vitejs/plugin-react-swc'
 import { defineConfig } from 'vite'
 import vitePluginCompression from 'vite-plugin-compression'
 import { resolve } from 'path'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 const baseUrl = 'react-main'
 
@@ -12,6 +13,11 @@ export default defineConfig((config) => {
     },
     plugins: [
       react(),
+      // * 使用 svg 图标
+      createSvgIconsPlugin({
+        iconDirs: [resolve(process.cwd(), 'src/assets/icons')],
+        symbolId: 'icon-[dir]-[name]',
+      }),
       vitePluginCompression({
         threshold: 1024 * 10, // 对大于 10kb 的文件进行压缩
         // deleteOriginFile: true,

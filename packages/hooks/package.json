@@ -9,6 +9,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
+    "@types/node": "^18.0.0",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "eslint": "^7.32.0",
@@ -25,7 +26,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
-    "utils": "workspace:*",
-    "store": "workspace:*"
+    "store": "workspace:*",
+    "utils": "workspace:*"
   }
 }
